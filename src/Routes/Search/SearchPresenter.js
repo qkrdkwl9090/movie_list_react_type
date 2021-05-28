@@ -11,7 +11,7 @@ const SearchPresenter = ({
     loading
 }) => null;
 
-Searchresenter.propTypes = {    
+SearchPresenter.propTypes = {    
     movieResults:PropTypes.array,
     tvResults:PropTypes.array,
     error:PropTypes.bool.isRequired,
@@ -20,4 +20,4 @@ Searchresenter.propTypes = {
     handleSubmit: PropTypes.func.isRequired
 
 }
-export default TVPresenter;
+export default SearchPresenter;
