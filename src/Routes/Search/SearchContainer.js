@@ -10,11 +10,19 @@ export default class extends React.Component{
         error : null,
         loading: true
     };
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        event.preventDefault();
         const { searchTerm } = this.state;
         if(searchTerm!==""){
             this.searchByTeam();
         } 
+    }
+    updateTerm = (event) => {
+        const {target: {value}} = event;
+        this.setState({
+            searchTerm: value
+        })
+
     }
     searchByTeam = async () => {        
         const { searchTerm } = this.state;
@@ -40,7 +48,8 @@ export default class extends React.Component{
     }
     render() {
         const {movieResults, tvResults, searchTerm, error, loading} = this.state;
-        return <SearchPresenter movieResults={movieResults} tvResults={tvResults} searchTerm={searchTerm} error={error} loading={loading}/>
+        console.log(this.state)
+        return <SearchPresenter movieResults={movieResults} tvResults={tvResults} searchTerm={searchTerm} error={error} loading={loading} handleSubmit={this.handleSubmit} updateTerm={this.updateTerm}/>
     }
 
 }
