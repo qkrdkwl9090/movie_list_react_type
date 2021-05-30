@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "Components/Loader";
+import Helmet from "react-helmet";
 
 const Container = styled.div`
     height: calc(100vh - 50px);
@@ -71,9 +72,15 @@ const DetailPresenter = ({
     error,
     loading
 }) => (
-    loading ? <Loader/> : 
+    loading ? (
+    <>
+        <Helmet><title>Loading | Nemflix</title></Helmet>
+        <Loader/> 
+    </>
+    ) : (    
     <Container>
-        < Backdrop bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}/>
+        <Helmet><title>{result.original_title ? result.original_title : result.original_name} | Nemflix</title></Helmet>
+        <Backdrop bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}/>
         <Content>
             <Cover bgImage={result.poster_path ? `https://image.tmdb.org/t/p/original${result.poster_path}` : require("../../assets/noPosterSmall.PNG").default}/>
             <Data>
@@ -90,7 +97,7 @@ const DetailPresenter = ({
                 </Overview>
             </Data>
         </Content>
-    </Container>
+    </Container>)
 );
 
 DetailPresenter.propTypes = {    

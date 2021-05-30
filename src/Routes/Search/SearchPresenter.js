@@ -5,6 +5,7 @@ import Loader from "Components/Loader";
 import Section from "Components/Section";
 import Message from "Components/Message";
 import Poster from "Components/Poster";
+import Helmet from "react-helmet";
 
 const Container = styled.div`
     padding:20px;
@@ -28,6 +29,7 @@ const SearchPresenter = ({
     updateTerm,
     loading
 }) => <Container>
+    <Helmet><title>Search | Nemflix</title></Helmet>
     <Form onSubmit={handleSubmit}>
         <Input placeholder="Search Movie or TV Shows..." value={searchTerm} onChange={updateTerm}></Input>
     </Form>
