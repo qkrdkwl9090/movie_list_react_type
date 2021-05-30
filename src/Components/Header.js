@@ -8,6 +8,7 @@ const Header = styled.header`
     left:0;
     width:100%;
     height:50px;
+    z-index: 9;
     display:flex;
     align-items: center;
     background-color:rgba(20,20,20, 0.8);
