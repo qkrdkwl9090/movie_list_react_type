@@ -86,9 +86,9 @@ const DetailPresenter = ({
             <Data>
                 <Title>{result.original_title ? result.original_title : result.original_name}</Title>
                 <ItemContainer>
-                    <Item>{result.release_date ? result.release_date.substring(0,4) : result.first_air_date.substring(0,4)} min</Item>
+                    <Item>{result.release_date ? result.release_date.substring(0,4) : result.first_air_date.substring(0,4)}</Item>
                     <Divider>º</Divider>
-                    <Item>{result.runtime ? result.runtime : result.episode_run_time[0]}</Item>
+                    <Item>{result.runtime ? result.runtime : result.episode_run_time[0]} min</Item>
                     <Divider>º</Divider>
                     <Item>{result.genres && result.genres.map((genre, index) => index === result.genres.length - 1 ? genre.name : `${genre.name} / `)}</Item>
                 </ItemContainer>
