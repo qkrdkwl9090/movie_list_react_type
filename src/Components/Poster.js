@@ -49,11 +49,14 @@ const Poster = ({id, imageUrl, title, rating, year, isMovie = false}) => (
     <Container>
         <ImageContainer>
             <Image bgUrl={imageUrl ? `https://image.tmdb.org/t/p/w300${imageUrl}` : require("../assets/noPosterSmall.PNG").default}/>
-            <Rating>
-                <span role="img" aria-label="rating">★
-                </span>{" "}
-                {rating}/10
-            </Rating>
+            {
+                rating && 
+                <Rating>
+                    <span role="img" aria-label="rating">★
+                    </span>{" "}
+                    {rating}/10
+                </Rating>
+            }
         </ImageContainer>
         <Title>{title.length > 18 ? `${title.substring(0, 18)}...` : title}</Title>
         <Year>{year}</Year>

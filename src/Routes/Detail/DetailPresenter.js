@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "Components/Loader";
 import Helmet from "react-helmet";
-
+import Section from "Components/Section";
+import Poster from "Components/Poster";
+import {Link} from "react-router-dom";
 const Container = styled.div`
     height: calc(100vh - 50px);
     width: 100%;
@@ -64,6 +66,7 @@ const Overview = styled.p`
     opacity: 0.7;
     line-height: 1.5;
     width: 50%;
+    margin-bottom: 40px;
 `;
 
 
@@ -95,6 +98,12 @@ const DetailPresenter = ({
                 <Overview>
                     {result.overview}
                 </Overview>
+                {
+                    result.belongs_to_collection && 
+                    // <Link to={result.isMovie? `/movie/${result.id}` : `/show/${result.id}`}>
+                        <Section title="Belong to Collection"><Poster key={result.belongs_to_collection.id} id={result.belongs_to_collection.id} title={result.belongs_to_collection.name} imageUrl={result.belongs_to_collection.poster_path}></Poster></Section>            
+                    // </Link>
+                } 
             </Data>
         </Content>
     </Container>)
@@ -102,8 +111,8 @@ const DetailPresenter = ({
 
 DetailPresenter.propTypes = {    
     result:PropTypes.object,
-    error:PropTypes.string.isRequired,
+    error:PropTypes.string,
     loading:PropTypes.bool
 
 }
-export default DetailPresenter;
+export default DetailPresenter;   
